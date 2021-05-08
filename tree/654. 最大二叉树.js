@@ -11,9 +11,10 @@
  * @return {TreeNode}
  */
 // 递归 recursion
-var constructMaximumBinaryTree = function(nums) {
-    if(nums.length === 0){return null;}
-    const big = Math.max(...nums);//注意[展开语法]的使用(...nums)；
+var constructMaximumBinaryTree = function (nums) {
+    if (nums.length === 0) { return null; }
+    // 注意展开语法(...nums)的使用
+    const big = Math.max(...nums);
     const flag = nums.indexOf(big);
     const root = new TreeNode(big);
     root.left = constructMaximumBinaryTree(nums.slice(0, flag));
