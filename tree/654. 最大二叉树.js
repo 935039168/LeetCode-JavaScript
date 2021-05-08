@@ -10,10 +10,10 @@
  * @param {number[]} nums
  * @return {TreeNode}
  */
-// 递归
+// 递归 recursion
 var constructMaximumBinaryTree = function(nums) {
     if(nums.length === 0){return null;}
-    const big = Math.max(...nums);//注意“展开语法”的使用(...nums)；
+    const big = Math.max(...nums);//注意[展开语法]的使用(...nums)；
     const flag = nums.indexOf(big);
     const root = new TreeNode(big);
     root.left = constructMaximumBinaryTree(nums.slice(0, flag));
