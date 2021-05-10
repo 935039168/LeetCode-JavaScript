@@ -6,4 +6,5 @@
 * 结构：脚本按照所属数据结构或算法归档
 
 ## 说明
+* 部分代码来自[慕课网-JavaScript实现数据结构与算法](https://coding.imooc.com/learn/list/446.html/)
 * 小白自学使用，难免bug，请谨慎取用，欢迎指教:grinning:
