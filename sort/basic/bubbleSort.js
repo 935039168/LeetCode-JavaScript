@@ -10,5 +10,5 @@ Array.prototype.bubbleSort = function () {
 };
 
 const arr = [5, 6, 10, 232, 4, 3, 2, 1, 0, -1];
-arr.bubbleSort(arr);
+arr.bubbleSort();
 console.log(arr);
