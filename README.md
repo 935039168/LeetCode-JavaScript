@@ -1,4 +1,4 @@
-# LeetCode-JavaScript
+# leetcode-javascript
 
 ## 项目介绍
 * 内容：包括一些 [LeetCode](https://leetcode-cn.com/) 题解和基本算法
