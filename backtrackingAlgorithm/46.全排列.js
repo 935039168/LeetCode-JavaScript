@@ -11,7 +11,7 @@ var permute = function (nums) {
     if (len === 0) { return []; }
     for (let i = 0; i < len; i++) {
         const temp = nums.slice();// 浅拷贝一份数组
-        temp.splice(i, 1);// 删除位于第一位的元素
+        temp.splice(i, 1);// 删除要操作的元素
         let arr = [];
         if (temp.length) {
             arr = permute(temp);
