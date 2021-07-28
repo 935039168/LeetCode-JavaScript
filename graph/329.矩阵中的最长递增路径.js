@@ -2,7 +2,7 @@
  * @param {number[][]} matrix
  * @return {number}
  */
-var longestIncreasingPath = function (matrix) {
+var longestIncreasingPath1 = function (matrix) {
     const l1 = matrix.length;
     const l2 = matrix[0].length;
     const m = new Array(l1);
@@ -42,6 +42,36 @@ var longestIncreasingPath = function (matrix) {
             m[i][j] = res;
         }
         return res;
+    };
+};
+// 简化
+var longestIncreasingPath = function (matrix) {
+    const d = [{ x: -1, y: 0 }, { x: 1, y: 0 }, { x: 0, y: -1 }, { x: 0, y: 1 }];
+    const l1 = matrix.length;
+    const l2 = matrix[0].length;
+    const m = new Array(l1);
+    for (let i = 0; i < l1; i++) m[i] = new Array(l2);
+    let res = 1;
+    for (let i = 0; i < l1; i++) {
+        for (let j = 0; j < l2; j++) {
+            res = Math.max(dfs(i, j), res);
+        }
+    }
+    return res;
+
+    function dfs(i, j) {
+        if (!m[i][j]) {
+            let res = 1;
+            for (let k = 0; k < 4; k++) {
+                const x = i + d[k]['x'];
+                const y = j + d[k]['y'];
+                if (x >= 0 && x < l1 && y >= 0 && y < l2 && matrix[i][j] > matrix[x][y]) {
+                    res = Math.max(res, dfs(x, y) + 1);
+                }
+            }
+            m[i][j] = res;
+        }
+        return m[i][j];
     };
 };
 
