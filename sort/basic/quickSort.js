@@ -16,7 +16,7 @@ Array.prototype.quickSort = function () {
     };
     const res = rec(this);
     res.forEach((n, i) => { this[i] = n });
-}
+};
 
 const arr = [5, 6, 10, 232, 4, 3, 2, 1, 0, -1];
 arr.quickSort();
