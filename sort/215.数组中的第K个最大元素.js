@@ -17,13 +17,13 @@ var findKthLargest1 = function (nums, k) {
 
 // 2.快速排序（提交报错）
 var findKthLargest2 = function (nums, k) {
-    nums.quickSort();
+    nums.quickSort2();
     return nums[k - 1];
 };
 // 快排，执行正常
 // 但是提交会报错：
 // FATAL ERROR: MarkCompactCollector: young object promotion failed Allocation failed - JavaScript heap out of memory
-Array.prototype.quickSort = function () {
+Array.prototype.quickSort2 = function () {
     const rec = (arr) => {
         if (arr.length < 2) { return arr; }
         const left = [];
@@ -44,10 +44,10 @@ Array.prototype.quickSort = function () {
 
 // 3.快速搜索
 var findKthLargest3 = function (nums, k) {
-    return nums.quickSelect(k);
+    return nums.quickSelect3(k);
 };
 // 快速搜索（由快速排序修改）
-Array.prototype.quickSelect = function (pos) {
+Array.prototype.quickSelect3 = function (pos) {
     const rec = function (arr, p) {
         const len = arr.length;
         if (len < 2) { return arr[0]; }
@@ -75,11 +75,11 @@ Array.prototype.quickSelect = function (pos) {
 
 // 4.可以通过提交的快速排序
 var findKthLargest4 = function (nums, k) {
-    nums.quickSort2();
+    nums.quickSort4();
     return nums[nums.length - k];
 };
 // 优化的快速排序
-Array.prototype.quickSort2 = function (left, right) {
+Array.prototype.quickSort4 = function (left, right) {
     if (left === undefined || right === undefined) {
         left = 0;
         right = this.length - 1;
@@ -102,10 +102,42 @@ Array.prototype.quickSort2 = function (left, right) {
     }
     this[left] = this[i];
     this[i] = temp;
-    this.quickSort2(left, i - 1);
-    this.quickSort2(i + 1, right);
+    this.quickSort4(left, i - 1);
+    this.quickSort4(i + 1, right);
+};
+// 5.快速搜索（官方翻译版）
+var findKthLargest5 = function (nums, k) {
+    return quickSelect5(nums, 0, nums.length - 1, nums.length - k);
+};
+const quickSelect5 = function (a, l, r, index) {
+    const q = randomPartition5(a, l, r);
+    if (q === index) {
+        return a[q];
+    } else {
+        return q < index ? quickSelect5(a, q + 1, r, index) : quickSelect5(a, l, q - 1, index);
+    }
+};
+const randomPartition5 = function (a, l, r) {
+    const i = parseInt(Math.random() * (r - l + 1) + l);
+    swap5(a, i, r);
+    return partition5(a, l, r);
+};
+const partition5 = function (a, l, r) {
+    let x = a[r], i = l - 1;
+    for (let j = l; j < r; ++j) {
+        if (a[j] <= x) {
+            swap5(a, ++i, j);
+        }
+    }
+    swap5(a, i + 1, r);
+    return i + 1;
+};
+const swap5 = function (a, i, j) {
+    const temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
 };
 
 
 const a = [1, 2, 3, 4, 5, 6, 7, 8];
-console.log(findKthLargest4(a, 1));
+console.log(findKthLargest5(a, 1));
