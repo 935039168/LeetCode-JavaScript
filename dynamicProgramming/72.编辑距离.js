@@ -25,8 +25,10 @@ var minDistance = function (word1, word2) {
     for (let i = 1; i <= len1; i++) {
         for (let j = 1; j <= len2; j++) {
             if (word1[i - 1] === word2[j - 1]) {
+                // 如果对应相等，则距离不变
                 dp[i][j] = dp[i - 1][j - 1];
             } else {
+                // 如果不相等，则从临近方案中选择最小路径+1
                 dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + 1);
             }
         }
