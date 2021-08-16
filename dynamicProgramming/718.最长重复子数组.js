@@ -26,7 +26,7 @@ var findLength1 = function (nums1, nums2) {
     return res;
 };
 // 滚动数组
-var findLength = function (nums1, nums2) {
+var findLength2 = function (nums1, nums2) {
     const len1 = nums1.length, len2 = nums2.length;
     let res = 0;
     const dp = Array(len2 + 1).fill(0);
@@ -41,6 +41,35 @@ var findLength = function (nums1, nums2) {
         }
     }
     return res;
+};
+// 滑动窗口
+var findLength = function (nums1, nums2) {
+    function maxLength(add1, add2, len) {
+        let ret = 0, k = 0;
+        for (let i = 0; i < len; i++) {
+            if (nums1[add1 + i] === nums2[add2 + i]) {
+                k++;
+            } else {
+                k = 0;
+            }
+            ret = Math.max(ret, k);
+        }
+        return ret;
+    }
+
+    let len1 = nums1.length, len2 = nums2.length;
+    let ret = 0;
+    for (let i = 0; i < len1; i++) {
+        let len = Math.min(len2, len1 - i);
+        let maxlen = maxLength(i, 0, len);
+        ret = Math.max(ret, maxlen);
+    }
+    for (let i = 0; i < len2; i++) {
+        let len = Math.min(len1, len2 - i);
+        let maxlen = maxLength(0, i, len);
+        ret = Math.max(ret, maxlen);
+    }
+    return ret;
 };
 
 console.log(findLength([1], [1])); // 1
