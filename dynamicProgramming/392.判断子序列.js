@@ -56,7 +56,7 @@ var isSubsequence3 = function (s, t) {
     return false;
 };
 // 时间复杂度为s.length的解
-var isSubsequence = function (s, t) {
+var isSubsequence4 = function (s, t) {
     const len1 = s.length;
     if (len1 === 0) return true;
     let index = -1;
@@ -69,6 +69,21 @@ var isSubsequence = function (s, t) {
         }
     }
     return true;
+};
+
+var isSubsequence = function (s, t) {
+    const len1 = s.length, len2 = t.length;
+    if (len1 === 0) return true;
+    let i = 0, j = 0;
+    while (i < len2 && j < len1) {
+        if (s[j] == t[i]) {
+            j++;
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return j == len1;
 };
 
 console.log(isSubsequence("abc", "ahbgdc"));// true
