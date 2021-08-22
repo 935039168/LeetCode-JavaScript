@@ -50,7 +50,7 @@ var countSubstrings2 = function (s) {
     return ans;
 };
 // 动态规划
-var countSubstrings = function (s) {
+var countSubstrings3 = function (s) {
     const len = s.length;
     const dp = Array.from(Array(len), () => Array(len).fill(false));
     let res = 0;
@@ -68,6 +68,24 @@ var countSubstrings = function (s) {
         }
     }
     return res;
+};
+// 双指针 https://mp.weixin.qq.com/s/2WetyP6IYQ6VotegepVpEw
+var countSubstrings = function (s) {
+    const n = s.length;
+    let res = 0;
+    for(let i = 0;i < n;i++){
+        extend(i,i);// 以i为中心
+        extend(i,i+1);// 以i和i+1为中心
+    }
+    return res;
+    
+    function extend(i,j){
+        while (i >= 0 && j < n && s[i] == s[j]) {
+            i--;
+            j++;
+            res++;
+        }
+    };
 };
 
 console.log(countSubstrings("abc"));// 3
