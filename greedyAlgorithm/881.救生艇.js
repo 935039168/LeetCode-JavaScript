@@ -12,22 +12,7 @@
  * @return {number}
  */
 // 贪心（审题审题还是审题！最多可同时载两人）
-var numRescueBoats = function (people, limit) {
-    const len = people.length;
-    let res = 0, l = 0, r = len - 1;
-    people = people.sort((a, b) => b - a);
-    while (l <= r) {
-        if (people[l] + people[r] <= limit) {
-            l++;
-            r--;
-            res++;
-        } else {
-            l++;
-            res++;
-        }
-    }
-    return res;
-};
+people.length
 
 console.log(numRescueBoats([1, 2], 3));// 1
 console.log(numRescueBoats([3, 2, 2, 1], 3));// 3
