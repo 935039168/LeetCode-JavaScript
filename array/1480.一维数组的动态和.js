@@ -3,7 +3,7 @@
  * @param {number[]} nums
  * @return {number[]}
  */
-var runningSum1 = function(nums) {
+var runningSum1 = function (nums) {
     let arr = []
     nums.reduce((current, next) => {
         let res = current + next;
