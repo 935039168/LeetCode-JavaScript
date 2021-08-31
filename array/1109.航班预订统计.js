@@ -32,7 +32,6 @@ var corpFlightBookings = function (bookings, n) {
         if (booking[1] < n) {
             nums[booking[1]] -= booking[2];
         }
-        console.log(nums);
     }
     for (let i = 1; i < n; i++) {
         nums[i] += nums[i - 1];

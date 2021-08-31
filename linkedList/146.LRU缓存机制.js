@@ -1,5 +1,5 @@
 // 题目：https://leetcode-cn.com/problems/lru-cache/
-// 双向链表
+// ----------------------------------双向链表----------------------------------
 // 解析：https://leetcode-cn.com/problems/lru-cache/solution/bu-yong-yu-yan-nei-jian-de-map-gua-dang-feng-zhuan/
 class ListNode {
     constructor(key, value) {
@@ -62,7 +62,7 @@ class LRUCache {
         return tail;
     }
 }
-// 使用Map模拟
+// ----------------------------------使用Map模拟----------------------------------
 var LRUCache = function (capacity) {
     this.cache = new Map()
     this.capacity = capacity;
