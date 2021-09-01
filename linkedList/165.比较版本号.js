@@ -17,7 +17,7 @@ var compareVersion1 = function (version1, version2) {
     return 0;
 };
 // 方法二：双指针，一次遍历，常数空间
-var compareVersion = function (version1, version2) {
+var compareVersion2 = function (version1, version2) {
     const getNextChunk = function (version, n, p) {
         if (p >= n) { return [0, p]; }// 如果超出则用0补位
         let pEnd = p, num = '';
@@ -37,6 +37,29 @@ var compareVersion = function (version1, version2) {
         }
         [p1, p2] = [r1[1] + 1, r2[1] + 1];// 避开.号所在位置
     };
+    return 0;
+};
+// 双指针
+var compareVersion = function (version1, version2) {
+    const len1 = version1.length,
+        len2 = version2.length;
+    let p1 = p2 = 0;
+    while (p1 < len1 || p2 < len2) {
+        let x1 = x2 = 0;
+        while (version1[p1] != "." && p1 < len1) {
+            x1 = 10 * x1 + version1[p1] - 0;
+            p1++;
+        }
+        p1++;
+        while (version2[p2] != "." && p2 < len2) {
+            x2 = 10 * x2 + version2[p2] - 0;
+            p2++;
+        }
+        p2++;
+        if (x1 === x2) { continue; }
+        else if (x1 < x2) { return -1; }
+        else { return 1; }
+    }
     return 0;
 };
 
