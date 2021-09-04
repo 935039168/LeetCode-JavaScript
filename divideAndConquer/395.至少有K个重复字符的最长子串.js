@@ -44,4 +44,4 @@ var longestSubstring = function (s, k) {
 };
 
 console.log(longestSubstring("araabsbaaabtbaaagbbaaabbgffffff", 4));//6
-console.log(longestSubstring("aaabb", 3));//5
+console.log(longestSubstring("aaabb", 2));//5
