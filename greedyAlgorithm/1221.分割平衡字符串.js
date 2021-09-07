@@ -3,7 +3,7 @@
  * @param {string} s
  * @return {number}
  */
- var balancedStringSplit = function (s) {
+ var balancedStringSplit1 = function (s) {
     let res = r = l = 0;
     const len = s.length;
     for (let i = 0; i < len; i++) {
@@ -16,6 +16,16 @@
         if (r === l) {
             res++;
         }
+    }
+    return res;
+};
+var balancedStringSplit = function (s) {
+    let res = 0, count = 0;
+    const len = s.length;
+    for (let i = 0; i < len; i++) {
+        if (s[i] === "L") { count--; }
+        else { count++; }
+        if (count === 0) { res++; }
     }
     return res;
 };
