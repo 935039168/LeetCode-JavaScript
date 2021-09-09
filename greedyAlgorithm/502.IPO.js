@@ -1,9 +1,9 @@
 // https://leetcode-cn.com/problems/ipo/submissions/
 /**
- * @param {number} k
- * @param {number} w
- * @param {number[]} profits
- * @param {number[]} capital
+ * @param {number} k 可融资次数
+ * @param {number} w 初始本金
+ * @param {number[]} profits 净利润
+ * @param {number[]} capital 需要的启动资金
  * @return {number}
  */
 var findMaximizedCapital = function (k, w, profits, capital) {
@@ -12,14 +12,15 @@ var findMaximizedCapital = function (k, w, profits, capital) {
         if (w < capital[i]) { flag = false; break; }
     }
     if (flag) {
+        // 如果全部启动资金都小于需要的启动资金，按照净利润排序，取前k个
         return w + profits.sort((a, b) => b - a).slice(0, k).reduce((a, b) => a + b);
     }
     const times = Math.min(k, len);
     for (let i = 0; i < times; i += 1) {
         let ind = -1;
         for (let j = 0; j < len; j += 1) {
-            if (w >= capital[j] && capital[j] != -1) {
-                if (ind == -1 || profits[j] > profits[ind]) {
+            if (w >= capital[j] && capital[j] != -1) {// 筛选符合启动资金的项目
+                if (ind == -1 || profits[j] > profits[ind]) {// 筛选最大利润的项目
                     ind = j;
                 }
             }
@@ -28,7 +29,7 @@ var findMaximizedCapital = function (k, w, profits, capital) {
             break;
         }
         w += profits[ind];
-        capital[ind] = -1;
+        capital[ind] = -1; // 标记为已使用
     }
     return w;
 };
