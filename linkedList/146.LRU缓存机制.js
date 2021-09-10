@@ -64,7 +64,7 @@ class LRUCache {
 }
 // ----------------------------------使用Map模拟----------------------------------
 var LRUCache = function (capacity) {
-    this.cache = new Map()
+    this.cache = new Map();
     this.capacity = capacity;
 };
 
@@ -74,7 +74,7 @@ LRUCache.prototype.get = function (key) {
         let tmp = this.cache.get(key);
         this.cache.delete(key);
         this.cache.set(key, tmp);
-        return tmp
+        return tmp;
     }
     return -1;
 };
