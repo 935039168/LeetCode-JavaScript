@@ -3,6 +3,8 @@
  * @param {string} s
  * @return {boolean}
  */
+// 题解：https://leetcode-cn.com/problems/valid-parenthesis-string/solution/you-xiao-de-gua-hao-zi-fu-chuan-by-leetc-osi3/
+// 贪心法
 var checkValidString = function (s) {
     let min = max = 0,// 未匹配左括号的最小值和最大值
         len = s.length;
