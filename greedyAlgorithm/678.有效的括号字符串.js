@@ -4,7 +4,8 @@
  * @return {boolean}
  */
 var checkValidString = function (s) {
-    let min = max = 0, len = s.length;
+    let min = max = 0,// 未匹配左括号的最小值和最大值
+        len = s.length;
     for (let i = 0; i < len; i++) {
         const t = s[i];
         if (t === "(") {
