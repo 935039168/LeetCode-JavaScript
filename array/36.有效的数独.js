@@ -59,7 +59,7 @@ var isValidSudoku = function (board) {
     const row = Array(9).fill(0).map(() => Array(9).fill(0));// 存放行数据
     const col = Array(9).fill(0).map(() => Array(9).fill(0));// 存放列数据
     // 慎用fill：当一个对象被传递给 fill方法的时候, 填充数组的是这个对象的引用 https://www.cnblogs.com/lhs-fight/p/14212969.html
-    const box = Array(3).fill(0).map(() => Array(3).fill(0).map(() => Array(9).fill(0)));// 存放9*9大方格数据
+    const box = Array(3).fill(0).map(() => Array(3).fill(0).map(() => Array(9).fill(0)));// 存放9组3*3小方格组成的3*3大方格数据
     for (let i = 0; i < 9; i++) {
         for (let j = 0; j < 9; j++) {
             const c = board[i][j];
