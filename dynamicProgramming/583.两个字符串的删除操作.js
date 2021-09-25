@@ -9,7 +9,7 @@
  * @param {string} word2
  * @return {number}
  */
-// 动态规划 dp 二维数组
+// 最长公共子序列 二维数组
 var minDistance1 = function (word1, word2) {
     const len1 = word1.length, len2 = word2.length;
     if (len1 === 0 || len2 === 0) return len1 + len2;
@@ -25,8 +25,8 @@ var minDistance1 = function (word1, word2) {
     }
     return len1 + len2 - dp[len1][len2] * 2;
 };
-// 动态规划 dp 一维数组
-var minDistance = function (word1, word2) {
+// 最长公共子序列 一维数组
+var minDistance2 = function (word1, word2) {
     const len1 = word1.length, len2 = word2.length;
     if (len1 === 0 || len2 === 0) return len1 + len2;
     const dp = Array(len2 + 1).fill(0);
@@ -41,6 +41,28 @@ var minDistance = function (word1, word2) {
         }
     }
     return len1 + len2 - dp[len2] * 2;
+};
+// 动态规划
+var minDistance = function (word1, word2) {
+    const len1 = word1.length, len2 = word2.length;
+    if (len1 === 0 || len2 === 0) return len1 + len2;
+    const dp = Array.from(Array(len1 + 1), () => Array(len2 + 1).fill(0));
+    for (let i = 0; i <= len1; i++) {
+        dp[i][0] = i;
+    }
+    for (let j = 0; j <= len2; j++) {
+        dp[0][j] = j;
+    }
+    for (let i = 1; i <= len1; i++) {
+        for (let j = 1; j <= len2; j++) {
+            if (word1[i - 1] === word2[j - 1]) {
+                dp[i][j] = dp[i - 1][j - 1];
+            } else {
+                dp[i][j] = Math.min(dp[i][j - 1], dp[i - 1][j]) + 1;
+            }
+        }
+    }
+    return dp[len1][len2];
 };
 
 console.log(minDistance("sea", "eat"));// 2
