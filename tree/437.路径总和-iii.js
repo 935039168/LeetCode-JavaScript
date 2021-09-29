@@ -64,9 +64,8 @@ const dfs = (root, prefix, curr, targetSum) => {
     ret += dfs(root.left, prefix, curr, targetSum);
     ret += dfs(root.right, prefix, curr, targetSum);
     // 回到本层，恢复状态，去除当前节点的前缀和数量
-    prefix.set(curr, (prefix.get(curr) || 0) - 1);// 哈希表删除当前前缀和（复原）
+    prefix.set(curr, prefix.get(curr) - 1);// 哈希表删除当前前缀和（复原）
 
     return ret;
 }
 // @lc code=end
-
