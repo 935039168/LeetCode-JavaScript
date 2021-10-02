@@ -30,5 +30,21 @@ var toHex1 = function (num) {
     res = dic[num] + res;
     return res;
 };
+// 题解：https://leetcode-cn.com/problems/convert-a-number-to-hexadecimal/solution/shu-zi-zhuan-huan-wei-shi-liu-jin-zhi-sh-2srt/
+// 位运算
+var toHex = function (num) {
+    if (num === 0) {
+        return "0";
+    }
+    const sb = [];
+    // 32位有符号整数的十六进制数有8位
+    for (let i = 7; i >= 0; i--) {
+        const val = (num >> (4 * i)) & 0xf;
+        if (sb.length > 0 || val > 0) {
+            sb.push(val < 10 ? String.fromCharCode('0'.charCodeAt() + val) : String.fromCharCode('a'.charCodeAt() + val - 10));
+        }
+    }
+    return sb.join('');
+}
 // @lc code=end
 
