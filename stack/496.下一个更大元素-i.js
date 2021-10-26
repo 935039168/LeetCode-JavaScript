@@ -22,6 +22,7 @@ var nextGreaterElement1 = function (nums1, nums2) {
     return res;
 };
 // 单调栈
+// 经典题目,关键词:"找到最近一个比其大的元素"
 // 题解：https://leetcode-cn.com/problems/next-greater-element-i/solution/xia-yi-ge-geng-da-yuan-su-i-by-leetcode-bfcoj/
 var nextGreaterElement = function (nums1, nums2) {
     const map = new Map();
