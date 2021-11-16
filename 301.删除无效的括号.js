@@ -9,7 +9,7 @@
  * @param {string} s
  * @return {string[]}
  */
- var removeInvalidParentheses1 = function(s) {
+var removeInvalidParentheses1 = function (s) {
 
     const helper = (str, start, lcount, rcount, lremove, rremove) => {
         if (lremove === 0 && rremove === 0) {
@@ -26,7 +26,7 @@
             // 如果剩余的字符无法满足去掉的数量要求，直接返回
             if (lremove + rremove > str.length - i) {
                 return;
-            } 
+            }
             // 尝试去掉一个左括号
             if (lremove > 0 && str[i] === '(') {
                 helper(str.substr(0, i) + str.substr(i + 1), i, lcount, rcount, lremove - 1, rremove);
@@ -83,4 +83,3 @@ const isValid = (str) => {
     return cnt === 0;
 }
 // @lc code=end
-
