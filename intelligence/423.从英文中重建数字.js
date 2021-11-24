@@ -13,7 +13,7 @@ var originalDigits = function (s) {
     const c = [...s].reduce((map, cur) => {
         return map.set(cur, map.has(cur) ? map.get(cur) + 1 : 1);
     }, new Map());
-
+    // 寻找剩余单词中的唯一特征字母
     const cnt = new Array(10).fill(0);
     cnt[0] = c.get('z') || 0;
     cnt[2] = c.get('w') || 0;
