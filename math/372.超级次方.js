@@ -29,6 +29,7 @@ var superPow1 = function (a, b) {
     return dfs(a, b, b.length - 1);
 };
 // 递归 + 快速幂
+// 快速幂 https://zhuanlan.zhihu.com/p/95902286
 var superPow = function (a, b) {
     const MOD = 1337;
 
@@ -41,9 +42,10 @@ var superPow = function (a, b) {
         let ans = 1;
         a %= MOD;
         while (b !== 0) {
-            if ((b & 1) != 0) ans = ans * a % MOD;
-            a = a * a % MOD;
-            b >>= 1;
+            if (b & 1) // 如果b的当前末位为1
+                ans = ans * a % MOD; // ans乘上当前的a
+            a = a * a % MOD; // a自乘
+            b >>= 1; // b往右移一位
         }
         return ans;
     }
