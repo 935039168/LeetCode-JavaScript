@@ -10,7 +10,7 @@
  * @return {boolean}
  */
 // 这解法有点费键盘
-var validTicTacToe = function (board) {
+var validTicTacToe1 = function (board) {
     let xN = 0,
         oN = 0,
         finish = 0;
@@ -98,6 +98,44 @@ var validTicTacToe = function (board) {
     }
     return true;
 };
+// 链接：https://leetcode-cn.com/problems/valid-tic-tac-toe-state/solution/you-xiao-de-jing-zi-you-xi-by-leetcode-s-c1j3/
+var validTicTacToe = function(board) {
+    let xCount = 0, oCount = 0;
+    for (const row of board) {
+        for (const c of row) {
+            xCount = (c === 'X') ? (xCount + 1) : xCount;
+            oCount = (c === 'O') ? (oCount + 1) : oCount;
+        }
+    }
+    if (oCount != xCount && oCount !== xCount - 1) {
+        return false;
+    }
+    if (win(board, 'X') && oCount !== xCount - 1) {
+        return false;
+    }
+    if (win(board, 'O') && oCount !== xCount) {
+        return false;
+    }
+    return true;
+};
+
+const win = (board, p) => {
+    for (let i = 0; i < 3; ++i) {
+        if (p === board[0][i] && p === board[1][i] && p === board[2][i]) {
+            return true;
+        }
+        if (p === board[i][0] && p === board[i][1] && p === board[i][2]) {
+            return true;
+        }
+    }
+    if (p === board[0][0] && p === board[1][1] && p === board[2][2]) {
+        return true;
+    }
+    if (p === board[0][2] && p === board[1][1] && p === board[2][0]) {
+        return true;
+    }
+    return false;
+}
 console.log(validTicTacToe(["XXX", "XOO", "OO "])); //false
 console.log(validTicTacToe(["XXX", "OOX", "OOX"])); //true
 console.log(validTicTacToe(["XXX", "   ", "OOO"])); //false
