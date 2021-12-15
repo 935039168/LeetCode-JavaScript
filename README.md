@@ -6,5 +6,4 @@
 * 结构：脚本按照所属数据结构或算法归档，其中basic文件夹为基础实现
 
 ## 说明
-* 部分base目录中的代码来自 [慕课网](https://coding.imooc.com/learn/list/446.html/) 
 * 小白自学使用，难免纰漏，请谨慎取用，欢迎指教:grinning:
