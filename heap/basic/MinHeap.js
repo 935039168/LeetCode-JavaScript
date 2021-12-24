@@ -18,7 +18,9 @@ class MinHeap {
         return i * 2 + 2;
     }
     shiftUp(index) {
-        if (index === 0) { return; }
+        if (index === 0) {
+            return;
+        }
         const parentIndex = this.getParentIndex(index);
         if (this.heap[parentIndex] > this.heap[index]) {
             this.swap(parentIndex, index);
@@ -42,7 +44,7 @@ class MinHeap {
         this.shiftUp(this.heap.length - 1);
     }
     pop() {
-        this.heap[0] = this.heap.pop();// 如此操作避免破坏之前的栈结构
+        this.heap[0] = this.heap.pop(); // 如此操作避免破坏之前的栈结构
         this.shiftDown(0);
     }
     peek() {
