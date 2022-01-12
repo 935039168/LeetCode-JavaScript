@@ -5,12 +5,6 @@
  */
 
 // @lc code=start
-/**
- * @param {number[][]} blocked
- * @param {number[]} source
- * @param {number[]} target
- * @return {boolean}
- */
 /*
     200个blocked最多可以封堵住200*(200-1)/2个格子,
     到达条件满足一下任一即可：
@@ -67,9 +61,9 @@ const check = (blocked, start, finish, hashBlocked) => {
         fy = finish[1];
     let countdown = Math.floor(blocked.length * (blocked.length - 1) / 2);
     const startPair = [sx, sy];
-    const queue = [];
+    const queue = []; // 广度优先队列
     queue.push(startPair);
-    const visited = new Set();
+    const visited = new Set(); // 记录已访问过的点
     visited.add(startPair.toString());
     while (queue.length && countdown > 0) {
         const [x, y] = queue.shift();
