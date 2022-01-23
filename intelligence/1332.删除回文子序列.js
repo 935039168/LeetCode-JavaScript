@@ -5,13 +5,13 @@
  */
 
 // @lc code=start
+// 脑筋急转弯！
+// 如果s是回文数，1次完成
+// 如果不是回文数，先消灭a，然后消灭b，2次完成
 /**
  * @param {string} s
  * @return {number}
  */
-// 脑筋急转弯！
-// 如果s是回文数，1次完成
-// 如果不是回文数，先消灭a，然后消灭b，2次完成
 var removePalindromeSub = function (s) {
     const n = s.length;
     for (let i = 0; i < Math.floor(n / 2); i++) {
