@@ -10,7 +10,7 @@
  * @return {string}
  */
 // https://leetcode-cn.com/problems/longest-nice-substring/solution/zui-chang-de-mei-hao-zi-zi-fu-chuan-by-l-4l1t/
-// 枚举
+// 枚举（二进制记录）
 var longestNiceSubstring = function (s) {
     const n = s.length;
     let maxPos = 0,
