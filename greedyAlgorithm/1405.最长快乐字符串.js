@@ -44,3 +44,4 @@ var longestDiverseString = function(a, b, c) {
     return res.join('');
 };
 // @lc code=end
+console.log(longestDiverseString(1, 1, 7)); // "ccaccbcc"
