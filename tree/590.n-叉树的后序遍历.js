@@ -32,7 +32,7 @@ var postorder1 = function (root) {
 };
 // 迭代
 // https://leetcode-cn.com/problems/n-ary-tree-postorder-traversal/solution/n-cha-shu-de-hou-xu-bian-li-by-leetcode-txesi/
-var postorder = function (root) {
+var postorder2 = function (root) {
     const res = [];
     if (root == null) {
         return res;
@@ -65,5 +65,17 @@ var postorder = function (root) {
         }
     }
     return res;
+};
+// 翻转稍作修改的先序遍历（根-右-左=>翻转）=>左-右-根
+var postorder = function (root) {
+    if (!root) return [];
+    let st = [root];
+    const res = [];
+    while (st.length > 0) {
+        const x = st.pop();
+        res.push(x.val);
+        st = st.concat([...x.children]);
+    }
+    return res.reverse();
 };
 // @lc code=end
