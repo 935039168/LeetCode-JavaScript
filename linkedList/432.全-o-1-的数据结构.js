@@ -9,7 +9,7 @@
 var AllOne = function () {
     this.root = new Node();
     this.root.prev = this.root;
-    this.root.next = this.root;
+    this.root.next = this.root;// 初始化链表哨兵，下面判断节点的 next 若为 root，则表示 next 为空（prev 同理）
     this.nodes = new Map();// nodes 维护每个字符串当前所处的链表节点
 };
 
@@ -31,7 +31,7 @@ AllOne.prototype.inc = function (key) {
         if (cur.keys.size === 0) {
             cur.remove();
         }
-    } else {
+    } else {// key 不在链表中
         if (this.root.next === this.root || this.root.next.count > 1) {
             this.nodes.set(key, this.root.insert(new Node(key, 1)));
         } else {
@@ -47,7 +47,7 @@ AllOne.prototype.inc = function (key) {
  */
 AllOne.prototype.dec = function (key) {
     const cur = this.nodes.get(key);
-    if (cur.count === 1) {
+    if (cur.count === 1) {  // key 仅出现一次，将其移出 nodes
         this.nodes.delete(key);
     } else {
         const pre = cur.prev;
@@ -100,7 +100,7 @@ class Node {
         this.keys = new Set();
         key ? this.keys.add(key) : this.keys.add("");
     }
-    insert(node) {
+    insert(node) {  // 在 this 后插入 node
         node.prev = this;
         node.next = this.next;
         node.prev.next = node;
