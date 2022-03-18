@@ -17,8 +17,8 @@ Bank.prototype.check = function (account) {
 Bank.prototype.transfer = function (account1, account2, money) {
     if (this.check(account1) && this.check(account2) &&
         money <= this.balance[account1 - 1]) {
-        this.balance[account1 - 1] = this.balance[account1 - 1] - money;
-        this.balance[account2 - 1] = this.balance[account2 - 1] + money;
+        this.balance[account1 - 1] -= money;
+        this.balance[account2 - 1] += money;
         return true;
     }
     return false;
