@@ -18,17 +18,48 @@
  * @return {string}
  */
 // 递归
-var tree2str = function (root) {
+var tree2str1 = function (root) {
     if (!root) return "";
-    if (root.left !== null && root.right !== null) {
-        return `${root.val}(${tree2str(root.left)})(${tree2str(root.right)})`;
-    } else if (root.left !== null) {
-        return `${root.val}(${tree2str(root.left)})`;
-    } else if (root.right !== null) {
-        return `${root.val}()(${tree2str(root.right)})`;
-    } else {
+    if (root.left === null && root.right === null) {
         return `${root.val}`;
+    } else if (root.right === null) {
+        return `${root.val}(${tree2str(root.left)})`;
+    } else {
+        return `${root.val}(${tree2str(root.left)})(${tree2str(root.right)})`;
     }
 };
+// 迭代
+// https://leetcode-cn.com/problems/construct-string-from-binary-tree/solution/gen-ju-er-cha-shu-chuang-jian-zi-fu-chua-e1af/
+var tree2str = function (root) {
+    let ans = '';
+    const st = [root];
+    const vis = new Set();
+    while (st.length) {
+        const node = st[st.length - 1];
+        if (vis.has(node)) {
+            if (node !== root) {
+                ans += ")";
+            }
+            st.pop();
+        } else {
+            vis.add(node);
+            if (node !== root) {
+                ans += "(";
+            }
+            ans += '' + node.val;
+            if (!node.left && node.right) {
+                ans += '()';
+            }
+            if (node.right) {
+                st.push(node.right);
+            }
+            if (node.left) {
+                st.push(node.left);
+            }
+        }
+    }
+    return ans;
+};
+
 // @lc code=end
 
