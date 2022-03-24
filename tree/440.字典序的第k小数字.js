@@ -17,10 +17,10 @@ var findKthNumber = function (n, k) {
     k--;
     while (k > 0) {
         const steps = getSteps(curr, n);
-        if (steps <= k) {
+        if (steps <= k) {// 到下一个兄弟节点查询
             k -= steps;
             curr++;
-        } else {
+        } else {// 到下一层节点查询
             curr = curr * 10;
             k--;
         }
@@ -28,10 +28,10 @@ var findKthNumber = function (n, k) {
     return curr;
 }
 
+// 计算以curr为根节点（以n为最大值）的子树下有多少节点
 const getSteps = (curr, n) => {
     let steps = 0;
-    let first = curr;
-    let last = curr;
+    let first = curr, last = curr;
     while (first <= n) {
         steps += Math.min(last, n) - first + 1;
         first = first * 10;
@@ -40,4 +40,4 @@ const getSteps = (curr, n) => {
     return steps;
 };
 // @lc code=end
-
+console.log(findKthNumber(1300, 200)); // 1178
