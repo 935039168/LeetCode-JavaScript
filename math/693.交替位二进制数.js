@@ -10,8 +10,10 @@
  * @return {boolean}
  */
 var hasAlternatingBits = function (n) {
-    const a = n ^ (n >> 1)
-    return (a & (a + 1)) === 0
+    // 异或，如果符合条件，异或的结果所有位都会是1
+    const a = n ^ (n >> 1);
+    // 判断2的幂次aa的位运算方法为a&(a-1)==0
+    return (a & (a + 1)) === 0;
 };
 // @lc code=end
 
