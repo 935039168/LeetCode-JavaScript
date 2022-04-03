@@ -12,7 +12,7 @@
  * @return {string}
  */
 // https://leetcode-cn.com/problems/longest-happy-string/solution/zui-chang-kuai-le-zi-fu-chuan-by-leetcod-5nde/
-var longestDiverseString = function(a, b, c) {
+var longestDiverseString = function (a, b, c) {
     const res = [];
     const arr = [
         [a, 'a'],
@@ -21,7 +21,7 @@ var longestDiverseString = function(a, b, c) {
     ];
 
     while (true) {
-        arr.sort((a, b) => b[0] - a[0]);
+        arr.sort((a, b) => b[0] - a[0]);    
         let hasNext = false;
         for (const [i, [c, ch]] of arr.entries()) {
             if (c <= 0) {
