@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+// ***********************哈希表************************
 /**
  * @param {number[]} nums
  */
@@ -36,3 +37,27 @@ Solution.prototype.pick = function (target) {
  */
 // @lc code=end
 
+// ***********************水塘抽样************************
+/**
+ * @param {number[]} nums
+ */
+var Solution = function (nums) {
+    this.nums = nums;
+};
+
+/** 
+ * @param {number} target
+ * @return {number}
+ */
+Solution.prototype.pick = function (target) {
+    let ans = 0;
+    for (let i = 0, cnt = 0; i < this.nums.length; ++i) {
+        if (this.nums[i] === target) {
+            ++cnt;
+            if (Math.floor(Math.random() * cnt) === 0) {
+                ans = i;
+            }
+        }
+    }
+    return ans;
+};
