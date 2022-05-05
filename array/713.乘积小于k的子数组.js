@@ -39,7 +39,7 @@ var numSubarrayProductLessThanK1 = function (nums, k) {
     return res;
 };
 // 累乘
-var numSubarrayProductLessThanK = function (nums, k) {
+var numSubarrayProductLessThanK2 = function (nums, k) {
     const n = nums.length;
     let p1 = 0, p2 = p1, res = 0;
     while (p1 < n) {
@@ -54,6 +54,19 @@ var numSubarrayProductLessThanK = function (nums, k) {
         }
         p1++;
         p2 = p1;
+    }
+    return res;
+};
+// 滑动窗口
+var numSubarrayProductLessThanK = function (nums, k) {
+    const n = nums.length;
+    let p1 = 0, p2 = p1, val = 1, res = 0;
+    while (p2 < n) {
+        val *= nums[p2++];
+        while (p1 < p2 && val >= k) {
+            val /= nums[p1++];
+        }
+        res += p2 - p1;
     }
     return res;
 };
