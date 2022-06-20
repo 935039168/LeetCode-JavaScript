@@ -10,6 +10,9 @@
  * @return {number[]}
  */
 // https://leetcode.cn/problems/diagonal-traverse/solution/pythonjavatypescriptgo-by-himymben-d3uq/
+// 已知 x + y = k 和 0 <= x < m 还有 0 <= y < n
+// 0 <= x < m, 0 <= k - x < n
+// 0 <= x < m, k - n < x <= k
 var findDiagonalOrder = function (mat) {
     const m = mat.length,
         n = mat[0].length;
