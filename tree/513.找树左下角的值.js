@@ -17,7 +17,8 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var findBottomLeftValue = function (root) {
+// dfs depth first search
+var findBottomLeftValue1 = function (root) {
     let maxDepth = 0, res = root.val;
     const dfs = (node, depth) => {
         if (!node) return;
@@ -29,6 +30,18 @@ var findBottomLeftValue = function (root) {
         dfs(node.right, depth);
     };
     dfs(root, 0);
+    return res;
+};
+// bfs breadth first search
+var findBottomLeftValue = function (root) {
+    let res = root.val;
+    const queue = [root];
+    while (queue.length) {
+        const node = queue.shift();
+        if (node.right) queue.push(node.right);
+        if (node.left) queue.push(node.left);
+        res = node.val;
+    }
     return res;
 };
 // @lc code=end
