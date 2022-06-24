@@ -18,7 +18,7 @@
  * @return {number[]}
  */
 // breadth  first search 
-var largestValues = function (root) {
+var largestValues1 = function (root) {
     const res = [];
     if (!root) return res;
     const queue = [root];
@@ -33,6 +33,19 @@ var largestValues = function (root) {
         }
         res.push(max);
     }
+    return res;
+};
+// depth first search
+var largestValues = function (root) {
+    const res = [];
+    const dfs = (node, height) => {
+        if (!node) return;
+        if (res[height] === undefined) res[height] = node.val;
+        else res[height] = Math.max(res[height], node.val);
+        dfs(node.left, height + 1);
+        dfs(node.right, height + 1);
+    };
+    dfs(root, 0);
     return res;
 };
 // @lc code=end
