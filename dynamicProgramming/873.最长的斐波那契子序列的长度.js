@@ -1,0 +1,37 @@
+/*
+ * @lc app=leetcode.cn id=873 lang=javascript
+ *
+ * [873] 最长的斐波那契子序列的长度
+ */
+
+// @lc code=start
+/**
+ * @param {number[]} arr
+ * @return {number}
+ */
+// dynamic programming
+// https://leetcode.cn/problems/length-of-longest-fibonacci-subsequence/solution/zui-chang-de-fei-bo-na-qi-zi-xu-lie-de-c-8trz/
+var lenLongestFibSubseq = function (arr) {
+    const n = arr.length,
+        dp = new Array(n).fill(0).map(() => new Array(n).fill(0));
+    const indices = new Map();
+    for (let i = 0; i < n; i++) {
+        indices.set(arr[i], i);
+    }
+    let ans = 0;
+    for (let i = 0; i < n; i++) {
+        for (let j = n - 1; j >= 0; j--) {
+            if (arr[j] * 2 <= arr[i]) {
+                break;
+            }
+            if (indices.has(arr[i] - arr[j])) {
+                const k = indices.get(arr[i] - arr[j]);
+                dp[j][i] = Math.max(dp[k][j] + 1, 3);
+                ans = Math.max(ans, dp[j][i]);
+            }
+        }
+    }
+    return ans;
+};
+// @lc code=end
+
