@@ -12,10 +12,7 @@
 var asteroidCollision = function (asteroids) {
     const res = [asteroids[0]];
     const X = (newVal) => {
-        if (res.length !== 0 && res[res.length - 1] > 0 &&
-            ((res[res.length - 1] < 0 && newVal > 0) ||
-                (res[res.length - 1] > 0 && newVal < 0))
-        ) {
+        if (res.length !== 0 && res[res.length - 1] > 0 && newVal < 0) {
             return true;
         }
         return false;
