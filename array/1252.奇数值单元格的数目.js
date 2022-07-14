@@ -52,7 +52,6 @@ var oddCells = function (m, n, indices) {
 var oddCells = function (m, n, indices) {
     const rows = new Array(m).fill(0),
         cols = new Array(n).fill(0);
-    let res = 0;
     for (const [x, y] of indices) {
         rows[x]++;
         cols[y]++;
